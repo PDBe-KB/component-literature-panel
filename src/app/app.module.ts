@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LiteratureComponent } from './literature/literature.component';
+import { CsvExporterComponent } from './csv-exporter/csv-exporter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LiteratureComponent
+    LiteratureComponent,
+    CsvExporterComponent
   ],
   imports: [
     BrowserModule
