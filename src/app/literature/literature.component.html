@@ -1,3 +1,79 @@
-<p>
-  literature works!
-</p>
+<div *ngIf="data">
+  <h4 id="publication-header" (click)="showOrCollapse()">
+    <i *ngIf="collapsed" class="icon icon-functional" data-icon="+"></i>
+    <i *ngIf="!collapsed" class="icon icon-functional" data-icon="-"></i>
+    {{data.category}} ({{ data.publications.length }})
+  </h4>
+
+
+  <div *ngIf="!collapsed">
+    <div class="row">
+      <div class="small-12 columns">
+        <div style="float: left; margin-right: 15px;">
+          Go to page:
+        </div>
+        <div style="float: left">
+          <button [disabled]="paginationOffset == 0"
+                  class="button pagination-button" (click)="setPaginationOffset(-4)">
+            <i class="icon icon-functional" data-icon="<"></i>
+          </button>
+        </div>
+        <div *ngFor="let page of pagination; let i = index" style="float: left">
+          <button class="button pagination-button {{checkActivePage(i)}}" *ngIf="showPage(i)" (click)="setPage(i)">
+            {{page}}
+          </button>
+        </div>
+        <div style="float: left">
+          <button [disabled]="paginationOffset >= pagination.length - paginationButtonLimit"
+                  class="button pagination-button" (click)="setPaginationOffset(4)">
+            <i class="icon icon-functional" data-icon=">"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="small-12 columns">
+        <app-csv-exporter *ngIf="data" [data]="data" [accession]="accession" [section]="data.category" category="publication"></app-csv-exporter>
+      </div>
+
+      <div id="publication-list-div" class="small-12 columns">
+        <div class="publication-list" *ngFor="let publication of sortByYear(); let i = index">
+          <div *ngIf="showPublication(i, data.show_limit)">
+            <strong>{{ publication.title }}</strong>
+            <br>
+            <span *ngIf="publication.authors">
+              {{ limitAuthorList(publication.authors) }}
+              <br>
+            </span>
+            <span *ngIf="publication.journal" class="journal">{{ publication.journal }} </span>
+            <span *ngIf="publication.issue" class="issue">{{ publication.issue }} </span>
+            <span *ngIf="publication.pages">{{ publication.pages }} </span>
+            <span *ngIf="publication.year">({{ publication.year }})<br></span>
+            <span *ngIf="publication.citation_count">
+              <strong>Cited: </strong> {{ publication.citation_count }} times
+              <br>
+            </span>
+            <div *ngIf="publication.pubmed_id">
+              <img src="https://www.ebi.ac.uk/pdbe/entry/static/images/logos/EuropePMC/favicon.png">
+              PMID:
+              <a href="https://europepmc.org/abstract/MED/{{publication.pubmed_id}}" target="_blank">
+                {{ publication.pubmed_id }} <i class="icon icon-generic" data-icon="x"></i>
+              </a>
+            </div>
+            <div *ngIf="publication.doi">
+              <img src="https://www.ebi.ac.uk/pdbe/entry/static/images/logos/doi/doi.png">
+              <a href="https://doi.org/{{publication.doi}}" target="_blank">
+                {{ publication.doi }} <i class="icon icon-generic" data-icon="x"></i>
+              </a>
+            </div>
+            <div *ngIf="publication.associated_pdbs.length > 0">
+              <strong>Related PDB entries: </strong>
+              <span *ngFor="let pdb of publication.associated_pdbs" style="font-weight: bold">
+                  <a href="https://pdbe.org/{{pdb}}" target="_blank">{{pdb}}</a>&nbsp;
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

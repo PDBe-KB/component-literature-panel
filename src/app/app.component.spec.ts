@@ -1,11 +1,15 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed, async} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {LiteratureComponent} from './literature/literature.component';
+import {CsvExporterComponent} from './csv-exporter/csv-exporter.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        LiteratureComponent,
+        CsvExporterComponent
       ],
     }).compileComponents();
   }));
