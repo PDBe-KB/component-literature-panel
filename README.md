@@ -1,6 +1,10 @@
 PDBe-KB Literature Panel Component
 =
 
+[![Build Status](https://www.travis-ci.com/PDBe-KB/component-literature-panel.svg?branch=main)](https://www.travis-ci.com/PDBe-KB/component-literature-panel)
+[![codecov](https://codecov.io/gh/PDBe-KB/component-literature-panel/branch/main/graph/badge.svg?token=LE7P93G7A5)](https://codecov.io/gh/PDBe-KB/component-literature-panel)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3df9aa685e8b62072d28/maintainability)](https://codeclimate.com/github/PDBe-KB/component-literature-panel/maintainability)
+
 This is the repository of a lightweight Angular 7 web component that provides information on literature, generally from PubMed/EuropePMC.
 
 This component is used on the PDBe-KB Aggregated Views of Proteins to display publications related to all the PDB entries of a UniProt accession.
