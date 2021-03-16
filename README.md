@@ -36,6 +36,13 @@ This web component embeds another PDBe web component: [https://github.com/PDBeur
 
 In order to use all the features of this web component, retrieve the search-autocomplete component and replace the contents of the "src/app/seach-autocomplete" folder with those files.
 
+The main template should also have the following CSS import:
+```angular2html
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-pdbe-green.css" type="text/css" media="all"/>
+```
+
 ## Basic usage
 
 The component can be added to any Angular7+ apps.
@@ -46,14 +53,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { SearchAutocompleteComponent } from './search-autocomplete/search-autocomplete.component';
+import { LiteratureComponent } from './literature/literature.component';
+import { CsvExporterComponent } from './csv-exporter/csv-exporter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppHeaderComponent,
-    SearchAutocompleteComponent
+    LiteratureComponent,
+    CsvExporterComponent
   ],
   imports: [
     BrowserModule
@@ -62,8 +69,6 @@ import { SearchAutocompleteComponent } from './search-autocomplete/search-autoco
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
 ```
 
 Adding the component to a template:
