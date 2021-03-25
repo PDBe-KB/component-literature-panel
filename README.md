@@ -86,7 +86,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mihaly Varadi** - *Migrating to GitHub* - [mvaradi](https://github.com/mvaradi)
+* **Mihaly Varadi** - *Initial implementation* - [mvaradi](https://github.com/mvaradi)
 
 See also the list of [contributors](https://github.com/PDBe-KB/component-literature-panel/contributors) who participated in this project.
 
